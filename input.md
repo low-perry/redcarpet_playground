@@ -45,3 +45,10 @@ And normal text.
 | Ampersand | & | Used for "and" |
 | **Pipe** | **\|** | **Used for separation** |
 | Tilde | ~ | Used for approximations |
+
+| Symbol Name | Symbol | Description |
+| :--- | :---: | :--- |
+| Ampersand | & | Used for "and" |
+| **Pipe** | **__PIPE__** | **Used for separation** |
+| **Pipe** | `__PIPE__` | **Used for separation** |
+| Tilde | ~ | Used for approximations |
