@@ -61,8 +61,8 @@ markdown = Redcarpet::Markdown.new(renderer, fenced_code_blocks: true, tables: t
 
 # Convert to HTML
 body_content = markdown.render(input_text)
-body_content = body_content.gsub('__PIPE__', '|')
 
+body_content = body_content.gsub('TOKEN_PIPE', '|')
 # Wrap in full HTML template
 html_output = <<~HTML
   <!DOCTYPE html>

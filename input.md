@@ -43,12 +43,23 @@ And normal text.
 | Symbol Name | Symbol | Description |
 | :--- | :---: | :--- |
 | Ampersand | & | Used for "and" |
-| **Pipe** | **\|** | **Used for separation** |
+| **Pipe** | **TOKEN_PIPE** | **Used for separation** |
 | Tilde | ~ | Used for approximations |
 
 | Symbol Name | Symbol | Description |
 | :--- | :---: | :--- |
 | Ampersand | & | Used for "and" |
-| **Pipe** | **__PIPE__** | **Used for separation** |
-| **Pipe** | `__PIPE__` | **Used for separation** |
+| **Pipe** | **TOKEN_PIPE** | **Used for separation** |
+| **Pipe** | `TOKEN_PIPE` | **Used for separation** |
+| **Pipe** | *TOKEN_PIPE* | **Used for separation** |
+| Tilde | ~ | Used for approximations |
+
+## Another Table Test
+
+| Symbol Name | Symbol | Description |
+| :--- | :---: | :--- |
+| Ampersand | & | Used for "and" |
+| **Pipe** | **TOKEN_PIPE** | **Used for separation** |
+| **Pipe** | `TOKEN_PIPE` | **Used for separation** |
+| **Pipe** | *TOKEN_PIPE* | **Used for separation** |
 | Tilde | ~ | Used for approximations |
