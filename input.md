@@ -22,8 +22,6 @@ And normal text.
 > > > [Tip]
 > > > And this is a tip inside the warning. Deep!
 
-> [Info]
-> Back to just a normal info box.
 
 > [Note]
 > This is a **top-level** note.
@@ -59,7 +57,24 @@ And normal text.
 | Symbol Name | Symbol | Description |
 | :--- | :---: | :--- |
 | Ampersand | & | Used for "and" |
-| **Pipe** | **TOKEN_PIPE** | **Used for separation** |
-| **Pipe** | `TOKEN_PIPE` | **Used for separation** |
+| `**Pipe**` | **TOKEN_PIPE** | **Used for separation** |
+| `**Pipe**` | `TOKEN_PIPE` | **Used for separation** |
 | **Pipe** | *TOKEN_PIPE* | **Used for separation** |
 | Tilde | ~ | Used for approximations |
+
+# Standard Callout Test
+
+> [Note]
+> **FYI:** The server restarts every Sunday at 3 AM.
+
+> [Tip]
+> You can press `Cmd + S` to save your work instantly.
+
+> [Important]
+> Please read the [guidelines](https://example.com) before posting.
+
+> [Warning]
+> This action cannot be undone. Check your backups.
+
+> [Danger]
+> **High Voltage!** Do not touch the exposed wires.

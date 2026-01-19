@@ -15,9 +15,16 @@ body {
 .callout {
   margin: 1.5em 0;
   padding: 12px 16px;
-  border-left: 4px solid transparent;
+  border-left: 5px solid transparent;
   border-radius: 4px;
-  background-color: #fdfdfd;
+}
+
+/* FIX FOR NESTING: Removes gaps when callouts are inside callouts */
+.callout .callout {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* Optional: slightly darken background of nested items for contrast if needed, 
+     but keeping it standard usually looks cleaner. */
 }
 
 /* The Title Bar (Inline) */
@@ -30,7 +37,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   vertical-align: middle;
-  opacity: 0.9;
 }
 
 /* Icon Setup */
@@ -44,73 +50,103 @@ body {
   display: inline-block;
 }
 
-/* Remove default margins from paragraphs inside callouts */
-.callout p {
-  margin-top: 0;
-}
-.callout p:last-child {
-  margin-bottom: 0;
+.callout p { margin-top: 0; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* Inline Code Styling */
+code {
+  background-color: #f4f4f4;
+  color: #c7254e;
+  font-weight: 600;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
 }
 
-/* Styling for code blocks inside callouts */
+/* Block Code Styling */
 .callout pre {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 10px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 12px;
   border-radius: 4px;
   overflow-x: auto;
-  margin-top: 10px; /* Space between text and code */
+  margin-top: 10px;
 }
 
-/* --- THEMES --- */
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+th { background-color: #f8f9fa; }
 
-/* Note (Blue) */
+
+/* --- THEMES (ISO Standard Colors) --- */
+
+/* 1. NOTE (Blue - Info) */
 .callout-note {
-  background-color: #eef6fc;
-  border-left-color: #2b95d6;
+  background-color: #e3f2fd;
+  border-left-color: #2196f3;
 }
-.callout-note .callout-title { color: #2b95d6; }
-.callout-note .callout-title::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232b95d6"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
+/* New Selector: Targets the specific title class directly */
+.callout-title-note { 
+  color: #1976d2; 
 }
-
-/* Warning (Orange/Gold) */
-.callout-warning {
-  background-color: #fff9e6;
-  border-left-color: #d97706;
-}
-.callout-warning .callout-title { color: #d97706; }
-.callout-warning .callout-title::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d97706"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>');
+.callout-title-note::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231976d2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
 }
 
-/* Info (Gray/Slate) */
-.callout-info {
-  background-color: #f1f5f9;
-  border-left-color: #475569;
-}
-.callout-info .callout-title { color: #475569; }
-.callout-info .callout-title::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23475569"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>');
-}
-
-/* Tip (Green) */
+/* 2. TIP (Green - Success/Advice) */
 .callout-tip {
-  background-color: #ecfdf5;
-  border-left-color: #059669;
+  background-color: #e8f5e9;
+  border-left-color: #4caf50;
 }
-.callout-tip .callout-title { color: #059669; }
-.callout-tip .callout-title::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23059669"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>');
+.callout-title-tip { 
+  color: #388e3c; 
+}
+.callout-title-tip::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23388e3c"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>');
 }
 
-/* Urgent (Red) */
-.callout-urgent {
-  background-color: #fef2f2;
-  border-left-color: #dc2626;
+/* 3. IMPORTANT (Purple - Comment/Chat) */
+.callout-important {
+  background-color: #f3e5f5;
+  border-left-color: #9c27b0;
 }
-.callout-urgent .callout-title { color: #dc2626; }
-.callout-urgent .callout-title::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23dc2626"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>');
+.callout-title-important { 
+  color: #7b1fa2; 
+}
+.callout-title-important::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%237b1fa2"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>');
+}
+
+/* 4. WARNING (Orange/Yellow - Caution) */
+.callout-warning {
+  background-color: #fff3e0;
+  border-left-color: #ff9800;
+}
+.callout-title-warning { 
+  color: #f57c00; 
+}
+.callout-title-warning::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23f57c00"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>');
+}
+
+/* 5. DANGER (Red - High Hazard) */
+.callout-danger {
+  background-color: #ffebee;
+  border-left-color: #f44336;
+}
+.callout-title-danger { 
+  color: #d32f2f; 
+}
+.callout-title-danger::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d32f2f"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>');
 }
 
 /* --- SYNTAX HIGHLIGHTING (Rouge) --- */
@@ -124,11 +160,3 @@ body {
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 { color: #0a3069; } /* String */
 .highlight .na, .highlight .nc, .highlight .no, .highlight .ni, .highlight .ne, .highlight .nf { color: #8250df; } /* Attribute/Function */
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx { color: #0550ae; } /* Number */
-
-code {
-  background-color: #f4f4f4; 
-  color: #dc3545;            
-  font-weight: 600;          
-  padding: 0.2rem 0.4rem;   
-  border-radius: 4px;
-}

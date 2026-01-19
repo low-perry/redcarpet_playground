@@ -5,7 +5,12 @@ require 'rouge/plugins/redcarpet'
 class CalloutRenderer < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
   # Supported callouts
-  CALLOUT_TYPES = %w[note warning info tip urgent].freeze
+  CALLOUT_TYPES = %w[note tip important warning danger].freeze
+
+  def table_cell(content, alignment)
+    content = content.gsub('TOKEN_PIPE', '|')
+    "<td style='text-align: left'>#{content}</td>"
+  end
 
   def block_quote(quote)
     # Regex for callout blocks
@@ -28,14 +33,14 @@ class CalloutRenderer < Redcarpet::Render::HTML
         clean_content = chunk.sub(/\[#{type}\]/i, '')
 
         # Prepare title
-        title_element = "<span class='callout-title'>#{display_title}</span>"
+        title_element = "<span class='callout-title callout-title-#{type}'>#{display_title}</span>"
 
         # Content injection
         if clean_content.strip.start_with?("<p>")
           final_content = clean_content.sub("<p>", "<p>#{title_element}")
         else
           # Fallback injection
-          final_content = "<div class='callout-title'>#{display_title}</div>#{clean_content}"
+          final_content = "<div class='callout-title callout-title-#{type}'>#{display_title}</div>#{clean_content}"
         end
 
         "<div class='callout callout-#{type}'>#{final_content}</div>"
@@ -62,7 +67,6 @@ markdown = Redcarpet::Markdown.new(renderer, fenced_code_blocks: true, tables: t
 # Convert to HTML
 body_content = markdown.render(input_text)
 
-body_content = body_content.gsub('TOKEN_PIPE', '|')
 # Wrap in full HTML template
 html_output = <<~HTML
   <!DOCTYPE html>
